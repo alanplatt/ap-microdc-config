@@ -1,0 +1,60 @@
+---
+
+project: ap
+
+accounts:
+  nonprod:
+    account_id: 218067387106
+    awsprofile: microdc-preprod
+    domain: nonprod.apmicrodc.equalexperts.io
+    sslcertificate: arn:aws:acm:eu-west-1:218067387106:certificate/03c89eb2-3259-4c71-80dd-d5b9a18d2194
+    region: eu-west-1
+    sshpublickey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCuZHash0bRIjqifX150Y79N0whaApVyio2wbX4/q32vEmghEHMaKLLbfmjKFksNpMSccM/OGDFNp5gmBpaRg+AMu5DhNfbn0Pxzpij8QshOVeobi9fDH8i+pgv8Y1sm3j8yr4CAiZzzOEGUz70y/xs7J1PuTuBvt+STEiqRgsG3SuhKEpcoXymYGXG/KHGzzVZ58iox9y/X9DalVGfO4hxKj57KtfnTd740ZVACKx9uGlwle0Ms+laqpb9KhsNu6y+nPFtmbJuk0ep3u7KVl48979J1K2BAP8pxvmFtN58I93qS+lZ2D3zhX0Nq/svvFHE74FL+ix4BW1/cHU/g2mbs5N6zi2NvpvEe4QTnr8Q2P94HxZlJi/QNhejrWSzQcEtUQgfmpEKlvrz52A7gNLM/RmAd3nPzJJjCPmJVNWR8HxgVQF98zTn/7Q84iqcZf45pHpQcGmHfEkDFYHd+ww4ebKghauc1EDkBEyQZMcvqmxddzbCVkUaipifLE0uekdtWCf9Vr/e0ZE6S7g2LTGZYXPY1pLVqciWmctEO9M4CAkaVXSRPcvNG6lBz47AhBXR96VTd+fIO6naphTN4DfUPCoxvCmEkWm9hpB6ZnR5RjYNDUCPfJpg3oTtfMMl4iIUsBiHwddV4srUqP+u7sX1gEc4zND1IcaP5N+zhMzufQ==
+    environments:
+      mgmt:
+        stack: mgmt
+      dev:
+        stack: service
+      stage:
+        stack: service
+  prod:
+    account_id: 370384821124
+    awsprofile: microdc-prod
+    domain: prod.apmicrodc.equalexperts.io
+    sslcertificate: arn:aws:acm:eu-west-1:218067387106:certificate/03c89eb2-3259-4c71-80dd-d5b9a18d2194
+    region: eu-west-1
+    sshpublickey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCuZHash0bRIjqifX150Y79N0whaApVyio2wbX4/q32vEmghEHMaKLLbfmjKFksNpMSccM/OGDFNp5gmBpaRg+AMu5DhNfbn0Pxzpij8QshOVeobi9fDH8i+pgv8Y1sm3j8yr4CAiZzzOEGUz70y/xs7J1PuTuBvt+STEiqRgsG3SuhKEpcoXymYGXG/KHGzzVZ58iox9y/X9DalVGfO4hxKj57KtfnTd740ZVACKx9uGlwle0Ms+laqpb9KhsNu6y+nPFtmbJuk0ep3u7KVl48979J1K2BAP8pxvmFtN58I93qS+lZ2D3zhX0Nq/svvFHE74FL+ix4BW1/cHU/g2mbs5N6zi2NvpvEe4QTnr8Q2P94HxZlJi/QNhejrWSzQcEtUQgfmpEKlvrz52A7gNLM/RmAd3nPzJJjCPmJVNWR8HxgVQF98zTn/7Q84iqcZf45pHpQcGmHfEkDFYHd+ww4ebKghauc1EDkBEyQZMcvqmxddzbCVkUaipifLE0uekdtWCf9Vr/e0ZE6S7g2LTGZYXPY1pLVqciWmctEO9M4CAkaVXSRPcvNG6lBz47AhBXR96VTd+fIO6naphTN4DfUPCoxvCmEkWm9hpB6ZnR5RjYNDUCPfJpg3oTtfMMl4iIUsBiHwddV4srUqP+u7sX1gEc4zND1IcaP5N+zhMzufQ==
+    environments:
+      prod:
+        stack: service
+
+
+stacks:
+  terraform:
+    git: git@github.com:EqualExperts/ee-microdc-terraform-stack.git
+    ref: master
+  ansible:
+    git: git@github.com:EqualExperts/ee-microdc-ansible-stack.git
+    ref: master
+  osimage-builder:
+    git: git@github.com:alanplatt/osimage-builder.git
+    ref: master
+
+amis:
+  base-14.04:
+    os_release: trusty-14.04
+    template: templates/ubuntu-base-amd64-ebs.json
+  docker-14.04:
+    os_release: trusty-14.04
+    template: templates/ubuntu-docker-amd64-ebs.json
+  base-16.04:
+    os_release: xenial-16.04
+    template: templates/ubuntu-base-amd64-ebs.json
+  docker-16.04:
+    os_release: xenial-16.04
+    template: templates/ubuntu-docker-amd64-ebs.json
+
+apps:
+  deploy-container:
+    git: git@github.com:Xinja-Money/deploy-container.git
+    ref: master
