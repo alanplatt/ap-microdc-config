@@ -56,5 +56,9 @@ amis:
 
 apps:
   deploy-container:
-    git: git@github.com:Xinja-Money/deploy-container.git
+    git: git@github.com:alanplatt/deploy-container.git
     ref: master
+
+jenkins_ui_users:
+  - username: aplatt@equalexperts.com
+    permissions: [ global_admin ]
