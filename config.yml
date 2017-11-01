@@ -54,7 +54,7 @@ amis:
     os_release: xenial-16.04
     template: templates/ubuntu-docker-amd64-ebs.json
 
-apps:
+jenkins_jobs:
   deploy-container:
     git: git@github.com:alanplatt/deploy-container.git
     ref: master
