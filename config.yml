@@ -62,3 +62,5 @@ jenkins_jobs:
 jenkins_ui_users:
   - username: aplatt@equalexperts.com
     permissions: [ global_admin ]
+  - username: tvanneerijnen@equalexperts.com
+    permissions: [ global_admin ]
