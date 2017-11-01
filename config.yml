@@ -56,7 +56,7 @@ amis:
 
 jenkins_jobs:
   deploy-container:
-    git: git@github.com:alanplatt/deploy-container.git
+    git: git@github.com:Xinja-Money/deploy-container.git
     ref: master
 
 jenkins_ui_users:
